@@ -111,6 +111,12 @@ class Detector(object):
                 self.text += ch
             pre = ch
 
+    def reset_text(self):
+        """ Reset the target text to an empty string.
+
+        """
+        self.text = ''
+
     def cleaning_text(self):
         '''Cleaning text to detect
         (eliminate URL, e-mail address and Latin sentence if it is not written in Latin alphabet).
