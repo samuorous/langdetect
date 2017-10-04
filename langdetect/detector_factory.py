@@ -117,11 +117,13 @@ class DetectorFactory(object):
 PROFILES_DIRECTORY = path.join(path.dirname(__file__), 'profiles')
 _factory = None
 
+
 def init_factory():
     global _factory
     if _factory is None:
         _factory = DetectorFactory()
         _factory.load_profile(PROFILES_DIRECTORY)
+
 
 def detect(text):
     init_factory()
@@ -135,3 +137,14 @@ def detect_langs(text):
     detector = _factory.create()
     detector.append(text)
     return detector.get_probabilities()
+
+
+def get_detector():
+    """ Return a new Detector instance.
+
+    :return: a new Detector instance.
+    :rtype: Detector
+    """
+    global _factory
+    init_factory()
+    return _factory.create()
