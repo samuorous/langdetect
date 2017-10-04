@@ -117,6 +117,19 @@ class Detector(object):
         """
         self.text = ''
 
+    def reset_langprob(self):
+        """ Reset the target text to an empty string.
+
+        """
+        self.langprob = None
+
+    def reset(self):
+        """ Reset the instance so it will redetect language for a new string appended.
+
+        """
+        self.reset_text()
+        self.reset_langprob()
+
     def cleaning_text(self):
         '''Cleaning text to detect
         (eliminate URL, e-mail address and Latin sentence if it is not written in Latin alphabet).
